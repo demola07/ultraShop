@@ -23,7 +23,8 @@
   "homepage": "https://github.com/demola07/ultraShop#readme",
   "dependencies": {
     "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
   },
   "devDependencies": {
     "concurrently": "^7.2.1",
