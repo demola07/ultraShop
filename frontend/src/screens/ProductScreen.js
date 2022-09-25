@@ -7,6 +7,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 
 import { listProductDetails } from '../actions/productActions'
+import { addToCart } from '../actions/cartActions'
 
 const ProductScreen = () => {
 	const [qty, setQty] = useState(1)
@@ -22,7 +23,11 @@ const ProductScreen = () => {
 	}, [dispatch, params.id])
 
 	const addToCartHandler = () => {
-		navigate(`/cart/${params.id}?qty=${qty}`)
+		// navigate(`/cart/${params.id}?qty=${qty}`)
+
+		dispatch(addToCart(product._id, qty))
+		navigate('/cart')
+		// props.history.push('/cart')
 	}
 
 	return (
