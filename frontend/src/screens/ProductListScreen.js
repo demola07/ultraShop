@@ -30,30 +30,37 @@ const ProductListScreen = () => {
 		success: successDelete,
 	} = productDelete
 
-	// const productCreate = useSelector((state) => state.productCreate)
-	// const {
-	//   loading: loadingCreate,
-	//   error: errorCreate,
-	//   success: successCreate,
-	//   product: createdProduct,
-	// } = productCreate
+	const productCreate = useSelector((state) => state.productCreate)
+	const {
+		loading: loadingCreate,
+		error: errorCreate,
+		success: successCreate,
+		product: createdProduct,
+	} = productCreate
 
 	const userLogin = useSelector((state) => state.userLogin)
 	const { userInfo } = userLogin
 
 	useEffect(() => {
-		// dispatch({ type: PRODUCT_CREATE_RESET })
+		dispatch({ type: PRODUCT_CREATE_RESET })
 
 		if (!userInfo || !userInfo.isAdmin) {
 			navigate('/login')
 		}
 
-		// if (successCreate) {
-		//   navigate(`/admin/product/${createdProduct._id}/edit`)
-		// } else {
-		dispatch(listProducts('', pageNumber))
-		// }
-	}, [dispatch, navigate, userInfo, successDelete])
+		if (successCreate) {
+			navigate(`/admin/product/${createdProduct._id}/edit`)
+		} else {
+			dispatch(listProducts('', pageNumber))
+		}
+	}, [
+		dispatch,
+		navigate,
+		userInfo,
+		successDelete,
+		successCreate,
+		createdProduct,
+	])
 	// }, [
 	// 	dispatch,
 	// 	navigate,
@@ -71,7 +78,7 @@ const ProductListScreen = () => {
 	}
 
 	const createProductHandler = () => {
-		// dispatch(createProduct())
+		dispatch(createProduct())
 	}
 
 	return (
@@ -88,8 +95,8 @@ const ProductListScreen = () => {
 			</Row>
 			{loadingDelete && <Loader />}
 			{errorDelete && <Message variant='danger'>{errorDelete}</Message>}
-			{/* {loadingCreate && <Loader />}
-  {errorCreate && <Message variant='danger'>{errorCreate}</Message>} */}
+			{loadingCreate && <Loader />}
+			{errorCreate && <Message variant='danger'>{errorCreate}</Message>}
 
 			{loading ? (
 				<Loader />

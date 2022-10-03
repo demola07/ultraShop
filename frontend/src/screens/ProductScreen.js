@@ -15,7 +15,7 @@ const ProductScreen = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-	const productDetails = useSelector((state) => state.productDetail)
+	const productDetails = useSelector((state) => state.productDetails)
 	const { loading, error, product } = productDetails
 
 	useEffect(() => {
