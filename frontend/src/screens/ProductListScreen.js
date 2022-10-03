@@ -11,7 +11,7 @@ import {
 	deleteProduct,
 	createProduct,
 } from '../actions/productActions'
-// import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = () => {
 	const navigate = useNavigate()
@@ -23,12 +23,12 @@ const ProductListScreen = () => {
 	const productList = useSelector((state) => state.productList)
 	const { loading, error, products, page, pages } = productList
 
-	// const productDelete = useSelector((state) => state.productDelete)
-	// const {
-	//   loading: loadingDelete,
-	//   error: errorDelete,
-	//   success: successDelete,
-	// } = productDelete
+	const productDelete = useSelector((state) => state.productDelete)
+	const {
+		loading: loadingDelete,
+		error: errorDelete,
+		success: successDelete,
+	} = productDelete
 
 	// const productCreate = useSelector((state) => state.productCreate)
 	// const {
@@ -53,7 +53,7 @@ const ProductListScreen = () => {
 		// } else {
 		dispatch(listProducts('', pageNumber))
 		// }
-	}, [dispatch, navigate, userInfo])
+	}, [dispatch, navigate, userInfo, successDelete])
 	// }, [
 	// 	dispatch,
 	// 	navigate,
@@ -66,7 +66,7 @@ const ProductListScreen = () => {
 
 	const deleteHandler = (id) => {
 		if (window.confirm('Are you sure')) {
-			// dispatch(deleteProduct(id))
+			dispatch(deleteProduct(id))
 		}
 	}
 
@@ -86,9 +86,9 @@ const ProductListScreen = () => {
 					</Button>
 				</Col>
 			</Row>
-			{/* {loadingDelete && <Loader />}
-      {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
-      {loadingCreate && <Loader />}
+			{loadingDelete && <Loader />}
+			{errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+			{/* {loadingCreate && <Loader />}
   {errorCreate && <Message variant='danger'>{errorCreate}</Message>} */}
 
 			{loading ? (
