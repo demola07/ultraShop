@@ -20,12 +20,12 @@ const Header = () => {
 			<Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
 				<Container>
 					<LinkContainer to='/'>
-						<Navbar.Brand>ProShop</Navbar.Brand>
+						<Navbar.Brand>UltraShop</Navbar.Brand>
 					</LinkContainer>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<SearchBox />
-						<Nav className='ml-auto'>
+						<Nav className='ml-auto' style={{ 'padding-left': '14%' }}>
 							<LinkContainer to='/cart'>
 								<Nav.Link>
 									<i className='fas fa-shopping-cart'></i> Cart
